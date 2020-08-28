@@ -4,8 +4,8 @@ Begin {C62A69F0-16DC-11CE-9E98-00AA00574A4F} Form
    ClientHeight    =   9090
    ClientLeft      =   120
    ClientTop       =   465
-   ClientWidth     =   12420
-   OleObjectBlob   =   "UserForm1.frx":0000
+   ClientWidth     =   12465
+   OleObjectBlob   =   "FormEstudo.frx":0000
    StartUpPosition =   1  'CenterOwner
    WhatsThisHelp   =   -1  'True
 End
@@ -36,14 +36,14 @@ Private Sub BtnImagem_Click()
 End Sub
 
 Private Sub BtnNovo_Click()
-    TxtNome = Empty
+    txtNome = Empty
     TxtModelo = Empty
     CBBMarca = Empty
     CBBCatgeoria = Empty
     Range("i1").Value = ""
     ImgLoad.Picture = LoadPicture("")
     ImMarca.Picture = LoadPicture("")
-    TxtNome.SetFocus
+    txtNome.SetFocus
 End Sub
 
 Private Sub BtnSalvar_Click()
@@ -51,7 +51,7 @@ Private Sub BtnSalvar_Click()
   
   I = Range("A1").CurrentRegion.Rows.Count + 1
   
-  Cells(I, 1).Value = TxtNome.Value
+  Cells(I, 1).Value = txtNome.Value
   Cells(I, 2).Value = TxtModelo.Value
   Cells(I, 3).Value = CBBCatgeoria.Value
   Cells(I, 4).Value = CBBMarca.Value
@@ -78,7 +78,7 @@ End Sub
 Private Sub ListBox1_Click()
  Dim n As Integer
  n = ListBox1.ListIndex + 2
- TxtNome.Value = Cells(n, 1).Value
+ txtNome.Value = Cells(n, 1).Value
  TxtModelo.Value = Cells(n, 2).Value
  CBBCatgeoria.Value = Cells(n, 3).Value
  CBBMarca.Value = Cells(n, 4).Value
