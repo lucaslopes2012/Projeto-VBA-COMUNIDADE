@@ -1,0 +1,13 @@
+Alt + I, A, E - Funciona na tela ou menu que estiverem sidos chamados
+Alt + P também funciona na tela ou menu que estiver, mais de acordo com o indice (ordernação das colunas) que estiver
+Alt + T troca a ordem dos indices(das colunas)
+
+Alt + L chama a tela ou menu de Colaboradores
+Alt + H chama a tela ou menu de Recebedores
+Alt + G Chama a tela ou menu de Grupos
+Alt + V Chama a tela ou menu de Regiões
+
+Alt + M chama a importação de Registros
+Alt + X chama a exportação de Registros
+
+Alt + N chama a tela ou Menu de Balanços(balancete) Resultado final dos Gastos (transforma em relatorio geral fincanceiro)
