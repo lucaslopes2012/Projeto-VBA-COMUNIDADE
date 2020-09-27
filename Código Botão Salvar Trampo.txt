@@ -1,0 +1,102 @@
+  Dim I As Integer, EMBRANCO As Boolean, SQL As String
+    
+  Call MACROS.FORMATACAMPOS
+  EMBRANCO = False
+    
+  For I = 1 To 10
+    CAMPOS(I).BackColor = &HFFFFFF
+    Select Case I
+     Case Is = 1, 2
+       If CAMPOS(I).Value = "" Then
+         CAMPOS(I).BackColor = &HC0C0FF
+         EMBRANCO = True
+       End If
+     Case Is = 6, 7, 8, 9, 10
+       If CkBoxSConta.Value = False Then
+         If CAMPOS(I).Value = "" Then
+           CAMPOS(I).BackColor = &HC0C0FF
+           EMBRANCO = True
+         End If
+       End If
+    End Select
+  Next
+    
+  If EMBRANCO = True Then
+    MsgBox "OS SEGUINTES CAMPOS DEVEM SER PREENCHIDOS!!", vbCritical, "CADASTRO DE DELIVERY - ATENÇÃO!!"
+    Exit Sub
+  End If
+  
+  If TIPOFORMALT = False Then
+    SQL = "Insert Into Colaborador (Nome_Completo, Apelido, CPF, CNPJ, Contato, Titular_Conta, " & _
+           "Banco, Agencia_Conta, Tipo_Conta, Numero_Conta) Values ("
+    For I = 1 To 10
+       Select Case I
+         Case Is = 1
+           SQL = SQL & "'" & CAMPOS(I).Value & "',"
+         Case Is = 2
+           SQL = SQL & "'" & CAMPOS(I).Value & "',"
+         Case Is = 3
+           SQL = SQL & "'" & CAMPOS(I).Value & "',"
+         Case Is = 4
+           SQL = SQL & "'" & CAMPOS(I).Value & "',"
+         Case Is = 5
+           SQL = SQL & "'" & CAMPOS(I).Value & "',"
+         Case Is = 6
+           SQL = SQL & "'" & CAMPOS(I).Value & "',"
+         Case Is = 7
+           If CkBoxSConta.Value = True Then
+              SQL = SQL & "'S/ CONTA',"
+           Else:
+              SQL = SQL & "'" & CAMPOS(I).Value & "',"
+           End If
+         Case Is = 8
+           SQL = SQL & "'" & CAMPOS(I).Value & "',"
+         Case Is = 9
+           SQL = SQL & "'" & CAMPOS(I).Value & "',"
+         Case Is = 10
+           SQL = SQL & "'" & CAMPOS(I).Value & "');"
+       End Select
+    Next
+  Else:
+    SQL = "UPDATE Colaborador SET "
+    For I = 1 To 10
+       Select Case I
+         Case Is = 1
+           SQL = SQL & " Nome_Completo = '" & CAMPOS(1).Value & "', "
+         Case Is = 2
+           SQL = SQL & " Apelido = '" & CAMPOS(2).Value & "', "
+         Case Is = 3
+           SQL = SQL & " CPF = '" & CAMPOS(I).Value & "', "
+         Case Is = 4
+           SQL = SQL & " CNPJ = '" & CAMPOS(I).Value & "', "
+         Case Is = 5
+           SQL = SQL & " Contato = '" & CAMPOS(I).Value & "', "
+         Case Is = 6
+           SQL = SQL & " Titular_Conta = '" & CAMPOS(I).Value & "', "
+         Case Is = 7
+           If CkBoxSConta = True Then
+             SQL = SQL & " Banco = 'S/ CONTA', "
+           Else: SQL = SQL & " Banco = '" & CAMPOS(I).Value & "', "
+           End If
+         Case Is = 8
+           SQL = SQL & " Agencia_Conta = '" & CAMPOS(I).Value & "', "
+         Case Is = 9
+           SQL = SQL & " Tipo_Conta = '" & CAMPOS(I).Value & "', "
+         Case Is = 10
+           SQL = SQL & " Numero_Conta = '" & CAMPOS(I).Value & "' "
+       End Select
+    Next
+    SQL = SQL & "Where Código = " & CODIGO & ";"
+    BDCONSULTA.CursorType = adOpenDynamic
+  End If
+ 
+  Call MACROS.BANCO(SQL)
+  Call MACROS.FECHA_BANCO
+  
+  If TIPOFORMALT = False Then
+     CANCELAR_Click
+     MsgBox "COLABORADOR CADASTRADO COM SUCESSO!!", vbInformation, "CADASTRO DE DELIVERY - SUCESSO!!"
+  Else:
+     MsgBox "CADASTRO ALTERADO COM SUCESSO!!", vbInformation, "CADASTRO DE DELIVERY - SUCESSO!!"
+     Sair_Click
+  End If
