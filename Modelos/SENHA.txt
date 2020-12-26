@@ -1,0 +1,12 @@
+USUÁRIO:ADMIN
+SENHA:123
+
+
+
+A planilha funciona no Office 2007, 2010 e 2013 
+
+TUTORIAL: https://www.youtube.com/watch?v=JikGsYIIlN0
+
+Veja se as Macros estão habilitadas no seu Excel> 
+Caso não saiba habilitar segue o Tutorial >
+https://www.youtube.com/watch?v=Bw6mUlMq2U4
